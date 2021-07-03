@@ -1,15 +1,72 @@
+
 class PassList {
   constructor(url, parameter) {
-    this.data = [{ "title": "default", "passes": [{ "uuid": "1", "name": "baidu", "username": "zzz", "address": "www.baidu.com", "password": ",@Vj.ka$!YkKF8k41hak,.h;5D11;.1ls4f13d#f65lVV2kjs$hF5#488;!j7S4sF#D2ldS1KgKV!ssS$#g$.@9V7k.@h3@s!F,DDh49g34j@F0V7f!dl@@05;s#Dk13,6K5KaF#7l.,sflkD;alFDa", "settings": { "row": 15, "column": 10, "dict": "0123456789abcdefg" }, "time": "2021-07-03 18:27:56", "history": [] }] }];
+    this.db = wx.cloud.database();
+    // this.clCate = this.db.collection('ep_category');
+    // this.clPass = this.db.collection('ep_password');
+    this.category = [];
+    this.password = [];
+  }
+  async downloadCollection(colname) {
+    const db = wx.cloud.database()
+    const MAX_LIMIT = 100
+    const countResult = await db.collection(colname).count()
+    const total = countResult.total
+    // 计算需分几次取
+    const batchTimes = Math.ceil(total / 100)
+    // 承载所有读操作的 promise 的数组
+    const tasks = []
+    for (let i = 0; i < batchTimes; i++) {
+      const promise = db.collection(colname).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
+      tasks.push(promise)
+    }
+    // 等待所有
+    return (await Promise.all(tasks)).reduce((acc, cur) => {
+      return {
+        data: acc.data.concat(cur.data),
+        errMsg: acc.errMsg,
+      }
+    })
+  }
+  async downstreamDb() {
+    var res = await this.downloadCollection('ep_category')
+    var category = res.data;
+    res = await this.downloadCollection('ep_password')
+    var password = res.data
+    var that = this
+    return new Promise((resolve)=>{
+      that.decodeDatabase(category, password)
+      resolve()
+    })
+  }
+  decodeDatabase(category, password) {
+    var data = new Array;
+    category.forEach(function (cate) {
+      var _list = new Array;
+      password.forEach(function (pass) {
+        if (pass.cate_id == cate._id) {
+          _list.push(pass)
+        }
+      })
+      data.push({ 'title': cate.name, 'id': cate._id, 'passes': _list })
+    })
+    this.data = data
+  }
+  getCategory() {
+    return this.category
+  }
+  getPasswordByCategory(catId) {
+    var passes = new Array;
+
   }
   getPassList() {
     return this.data;
   }
-  getPassByUUID(uuid) {
+  getPassByID(_id) {
     var r_pass = null
     this.data.forEach(function (ps) {
       ps.passes.forEach(function (pass) {
-        if (pass.uuid == uuid)
+        if (pass._idid == _id)
           r_pass = pass
       })
     });

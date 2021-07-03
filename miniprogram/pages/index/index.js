@@ -17,7 +17,9 @@ Page({
     })
   },
   onLoad: function (options) {
-    this.refreshData()
+    app.globalData.passList.downstreamDb().then(() => {
+      this.refreshData()
+    });
   },
   tapCate: function (e) {
     var name = e.currentTarget.dataset.name
@@ -43,8 +45,8 @@ Page({
   },
   cancelModal: function () {
     this.setData({
-      newCateName:'',
-      newPassName:'',
+      newCateName: '',
+      newPassName: '',
       showAddCate: false,
       showAddPass: false,
     })
@@ -61,16 +63,16 @@ Page({
       itemList: ['新建分组', '新建密码'],
       success: function (res) {
         if (!res.cancel) {
-          if (res.tapIndex==0)
+          if (res.tapIndex == 0)
             that.setData({
-              showAddCate:true,
-              showAddPass:false
+              showAddCate: true,
+              showAddPass: false
             })
-          if (res.tapIndex==1)
-          that.setData({
-            showAddCate:false,
-            showAddPass:true
-          })
+          if (res.tapIndex == 1)
+            that.setData({
+              showAddCate: false,
+              showAddPass: true
+            })
         }
       }
     })

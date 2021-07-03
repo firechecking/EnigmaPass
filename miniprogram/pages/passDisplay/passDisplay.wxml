@@ -3,7 +3,7 @@
   <view class='user_info'>
     <view>用户名：{{currentInfo.username}}</view>
     <view>地址：{{currentInfo.address}}</view>
-    <view>版本：{{currentInfo.time}}</view>
+    <view>版本：{{add_time}}</view>
   </view>
   <view class="pass_detail">
     <view class="pass_detail_row" wx:for="{{currentInfo.settings.row}}" wx:for-item="row">
