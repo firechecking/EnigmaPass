@@ -31,16 +31,18 @@ Page({
   },
   selectPass: function (e) {
     wx.navigateTo({
-      url: `../passDisplay/passDisplay?uuid=${e.currentTarget.dataset.uuid}`
+      url: `../passDisplay/passDisplay?id=${e.currentTarget.dataset.id}`
     })
   },
   addCategory: function (e) {
+    app.globalData.passList.addCategory(this.data.newCateName)
+    this.refreshData()
     console.log(this.data.newCateName)
     this.cancelModal()
   },
   addPassword: function (e) {
-    console.log(this.data.newCateName)
-    console.log(this.data.newPassName)
+    app.globalData.passList.addPassword(this.data.newPassName, this.data.newCateName)
+    this.refreshData()
     this.cancelModal()
   },
   cancelModal: function () {

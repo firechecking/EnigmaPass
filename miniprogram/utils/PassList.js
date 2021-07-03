@@ -2,8 +2,6 @@
 class PassList {
   constructor(url, parameter) {
     this.db = wx.cloud.database();
-    // this.clCate = this.db.collection('ep_category');
-    // this.clPass = this.db.collection('ep_password');
     this.category = [];
     this.password = [];
   }
@@ -30,12 +28,12 @@ class PassList {
   }
   async downstreamDb() {
     var res = await this.downloadCollection('ep_category')
-    var category = res.data;
+    this.category = res.data;
     res = await this.downloadCollection('ep_password')
-    var password = res.data
+    this.password = res.data
     var that = this
-    return new Promise((resolve)=>{
-      that.decodeDatabase(category, password)
+    return new Promise((resolve) => {
+      that.decodeDatabase(that.category, that.password)
       resolve()
     })
   }
@@ -48,7 +46,7 @@ class PassList {
           _list.push(pass)
         }
       })
-      data.push({ 'title': cate.name, 'id': cate._id, 'passes': _list })
+      data.push({ 'title': cate.name, '_id': cate._id, 'passes': _list })
     })
     this.data = data
   }
@@ -57,16 +55,26 @@ class PassList {
   }
   getPasswordByCategory(catId) {
     var passes = new Array;
-
   }
   getPassList() {
     return this.data;
+  }
+  addCategory(name) {
+    this.category.push({ 'name': name, '_id': '', 'passes': [] })
+    this.decodeDatabase(this.category, this.password)
+  }
+  addPassword(passname, catename) {
+    this.password.push({
+      '_id': '5', 'add_time': new Date(), 'address': '', 'cate_id': this.category[0]._id, 'father_id': '',
+      'name': passname, 'password': '', 'settings': {}, 'username': ''
+    })
+    this.decodeDatabase(this.category, this.password)
   }
   getPassByID(_id) {
     var r_pass = null
     this.data.forEach(function (ps) {
       ps.passes.forEach(function (pass) {
-        if (pass._idid == _id)
+        if (pass._id == _id)
           r_pass = pass
       })
     });
