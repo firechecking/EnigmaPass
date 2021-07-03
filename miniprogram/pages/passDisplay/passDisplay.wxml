@@ -1,2 +1,9 @@
 <!--pages/passDisplay.wxml-->
-<text>pages/passDisplay.wxml</text>
+<view class='user_info'>
+<view>地址：</view>
+<view>用户名：</view>
+<view>版本：</view>
+</view>
+<view class="pass_detail">
+<button wx:for="">dfs</button>
+</view>

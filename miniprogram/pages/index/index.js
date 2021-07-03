@@ -4,22 +4,28 @@ const { envList } = require('../../envList.js')
 
 Page({
   data: {
-    passCate: [
-      { title: 'default', passes: [{ 'uuid': '1', 'name': 'baidu' }, { 'uuid': '2', 'name': 'alibaba'}], display: false },
-      { title: '邮箱', passes: [{ 'uuid': '3', 'name': 'tencent' }, { 'uuid': '5', 'name': 'pdd' }], display: true }
-    ]
+    passList: [],
+    cateDisplay:{'default':false,'邮箱':true}
+  },
+  refreshData:function(){
+    this.setData({
+      passList:app.globalData.passList.getPassList()
+    })
+  },
+  onLoad:function(options){
+    this.refreshData()
   },
   tapCate: function (e) {
-    var idx = e.currentTarget.dataset.index
-    let temp = this.data.passCate
-    temp[idx].display = !temp[idx].display
+    var name = e.currentTarget.dataset.name
+    let temp = this.data.cateDisplay
+    temp[name] = !temp[name]
     this.setData({
-      passCate: temp
+      cateDisplay: temp
     })
   },
   selectPass: function(e){
     wx.navigateTo({
-      url: '../passDisplay/passDisplay?uuid=${e.currentTarget.dataset.uuid}'
+      url: `../passDisplay/passDisplay?uuid=${e.currentTarget.dataset.uuid}`
     })
   }
 })

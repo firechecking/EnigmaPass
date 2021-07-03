@@ -1,4 +1,5 @@
 //app.js
+import { PassList } from './utils/PassList'; //引用
 App({
   onLaunch: function () {
     if (!wx.cloud) {
@@ -12,8 +13,8 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       })
+      var passList = new PassList();
+      this.globalData = { 'passList': passList };
     }
-
-    this.globalData = {}
   }
 })

@@ -1,23 +1,13 @@
 // pages/passDisplay.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-    
-  },
-
-  /**
-   * 组件的初始数据
-   */
+const app = getApp()
+Page({
   data: {
 
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
+  onLoad: function(option){
+    console.log(option)
+    let uuid = option.uuid
+    var passList = app.globalData.passList;
+    console.log(passList.getPassByUUID(uuid))
   }
 })

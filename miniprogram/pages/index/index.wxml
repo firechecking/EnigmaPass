@@ -3,10 +3,10 @@
   <input class="weui-input" placeholder="搜索" />
   <view class='pass_detail'>
   <!-- 类别 -->
-    <view wx:for="{{passCate}}" wx:for-item="cateName" wx:key="*this">
-      <view class="cate_menu" bindtap="tapCate" data-index="{{index}}">{{cateName.title}}</view>
+    <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
+      <view class="cate_menu" bindtap="tapCate" data-name="{{cateName.title}}">{{cateName.title}}</view>
       <!-- 当前类别密码列表 -->
-      <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this" wx:if="{{cateName.display}}"
+      <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this" wx:if="{{cateDisplay[cateName.title]}}"
       data-uuid='{{itemName.uuid}}' bindtap="selectPass">
         {{itemName.name}}
       </view>
