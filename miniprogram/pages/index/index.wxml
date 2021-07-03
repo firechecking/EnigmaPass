@@ -6,10 +6,22 @@
     <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
       <view class="cate_menu" bindtap="tapCate" data-name="{{cateName.title}}">{{cateName.title}}</view>
       <!-- 当前类别密码列表 -->
-      <view class="pass_title" wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this" wx:if="{{cateDisplay[cateName.title]}}"
-        data-uuid='{{itemName.uuid}}' bindtap="selectPass">
+      <view class="pass_title" wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this"
+        wx:if="{{cateDisplay[cateName.title]}}" data-uuid='{{itemName.uuid}}' bindtap="selectPass">
         {{itemName.name}}
       </view>
     </view>
   </view>
+  <modal hidden="{{!showAddCate}}" title="添加分组" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
+    bindconfirm="addCategory">
+    <input type='text' data-type="cate" placeholder="请输入分组名称" bindinput="updateAddName" />
+  </modal>
+  <modal hidden="{{!showAddPass}}" title="添加密码" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
+    bindconfirm="addPassword">
+    <input type='text' data-type="cate" placeholder="请输入分组名称" bindinput="updateAddName" />
+    <input type='text' data-type="pass" placeholder="请输入密码显示名称" bindinput="updateAddName" />
+  </modal>
+  <button class="add_btn" bindtap="showAddSheet">
+    <image class="img" src="../../images/add_btn.png"></image>
+  </button>
 </view>
