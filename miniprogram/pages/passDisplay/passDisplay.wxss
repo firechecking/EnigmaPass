@@ -4,6 +4,7 @@
 }
 .user_info {
   background-color: rgb(178, 200, 247);
+  padding: 20rpx;
 }
 .pass_detail{
   background-color: rgb(211, 245, 255);
@@ -16,4 +17,5 @@
 .char_block{
   width: 75rpx;
   height: 65rpx;
+  font-size: large;
 }
