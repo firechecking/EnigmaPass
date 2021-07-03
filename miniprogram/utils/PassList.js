@@ -1,4 +1,23 @@
+const col_cate = 'ep_category'
+const col_pass = 'ep_password'
+const default_settings = { 'row': 15, 'column': 10, 'dict': '0123456789fghjkmnpqrtuvwxyzDEFGMNPQRSTUVW~!@#$%^&*()_+{};<>,.' }
 
+function guid() {
+  return 'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0,
+      v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+function randstr(num, dic) {
+  var max = dic.length, min = 1;
+  var sb = '';
+  for (var i = 0; i < num; i++) {
+    var number = Math.floor(Math.random() * (max - min) + min);
+    sb += dic.charAt(number);
+  }
+  return sb.toString();
+}
 class PassList {
   constructor(url, parameter) {
     this.db = wx.cloud.database();
@@ -60,15 +79,19 @@ class PassList {
     return this.data;
   }
   addCategory(name) {
-    this.category.push({ 'name': name, '_id': '', 'passes': [] })
+    var newData = { 'name': name, '_id': guid() }
+    this.category.push(newData)
     this.decodeDatabase(this.category, this.password)
+    wx.cloud.database().collection(col_cate).add({ data: newData })
   }
-  addPassword(passname, catename) {
-    this.password.push({
-      '_id': '5', 'add_time': new Date(), 'address': '', 'cate_id': this.category[0]._id, 'father_id': '',
-      'name': passname, 'password': '', 'settings': {}, 'username': ''
-    })
+  addPassword(name, addr, uname, cateid) {
+    var newData = {
+      '_id': guid(), 'add_time': new Date(), 'address': addr, 'cate_id': cateid, 'father_id': '',
+      'name': name, 'username': uname, 'password': randstr(default_settings.row * default_settings.column, default_settings.dict), 'settings': default_settings,
+    }
+    this.password.push(newData)
     this.decodeDatabase(this.category, this.password)
+    wx.cloud.database().collection(col_pass).add({ data: newData })
   }
   getPassByID(_id) {
     var r_pass = null

@@ -5,15 +5,20 @@ const { envList } = require('../../envList.js')
 Page({
   data: {
     passList: [],
+    category: [],
     cateDisplay: { 'default': true, '邮箱': true },
     showAddCate: false,
     showAddPass: false,
-    newCateName: '请输入分组名称',
-    newPassName: '请输入密码显示名称'
+    newCateId: '',
+    newPassName: '',
+    newPassAddr: '',
+    newPassUName: ''
   },
   refreshData: function () {
+    console.log(app.globalData.passList.category)
     this.setData({
-      passList: app.globalData.passList.getPassList()
+      passList: app.globalData.passList.getPassList(),
+      category: app.globalData.passList.category
     })
   },
   onLoad: function (options) {
@@ -35,29 +40,40 @@ Page({
     })
   },
   addCategory: function (e) {
-    app.globalData.passList.addCategory(this.data.newCateName)
+    app.globalData.passList.addCategory(this.data.newCateId)
     this.refreshData()
-    console.log(this.data.newCateName)
+    console.log(this.data.newCateId)
     this.cancelModal()
   },
   addPassword: function (e) {
-    app.globalData.passList.addPassword(this.data.newPassName, this.data.newCateName)
+    app.globalData.passList.addPassword(
+      this.data.newPassName,
+      this.data.newPassAddr,
+      this.data.newPassUName,
+      this.data.newCateId
+    )
     this.refreshData()
     this.cancelModal()
   },
   cancelModal: function () {
     this.setData({
-      newCateName: '',
+      newCateId: '',
       newPassName: '',
+      newPassAddr: '',
+      newPassUName: '',
       showAddCate: false,
       showAddPass: false,
     })
   },
   updateAddName: function (e) {
     if (e.currentTarget.dataset.type == 'cate')
-      this.setData({ newCateName: e.detail.value })
-    else if (e.currentTarget.dataset.type == 'pass')
+      this.setData({ newCateId: e.detail.id })
+    else if (e.currentTarget.dataset.type == 'name')
       this.setData({ newPassName: e.detail.value })
+    else if (e.currentTarget.dataset.type == 'addr')
+      this.setData({ newPassAddr: e.detail.value })
+    else if (e.currentTarget.dataset.type == 'uname')
+      this.setData({ newPassUName: e.detail.value })
   },
   showAddSheet: function (e) {
     var that = this
