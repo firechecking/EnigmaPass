@@ -8,6 +8,9 @@ Page({
   onLoad: function (option) {
     let _id = option.id
     var passList = app.globalData.passList;
+    wx.setNavigationBarTitle({
+      title: passList.getPassByID(_id).name
+   })
     this.setData({
       currentInfo: passList.getPassByID(_id),
       add_time: passList.getPassByID(_id).add_time.toString()

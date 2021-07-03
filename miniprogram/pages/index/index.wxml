@@ -14,14 +14,14 @@
   </view>
   <modal hidden="{{!showAddCate}}" title="添加分组" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
     bindconfirm="addCategory">
-    <input type='text' data-type="cate" placeholder="请输入分组名称" bindinput="updateAddName" />
+    <input type='text' data-type="catename" placeholder="请输入分组名称" bindinput="updateAddName" />
   </modal>
   <modal hidden="{{!showAddPass}}" title="添加密码" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
     bindconfirm="addPassword">
     <input type='text' data-type="name" placeholder="请输入网站名称" bindinput="updateAddName" />
     <input type='text' data-type="addr" placeholder="请输入网站地址" bindinput="updateAddName" />
     <input type='text' data-type="uname" placeholder="请输入用户名" bindinput="updateAddName" />
-    <selector id="selector" data-type="cate" options="{{category}}" key="_id" text="name" bind:change="updateAddName"></selector>
+    <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName"></selector>
   </modal>
   <button class="add_btn" bindtap="showAddSheet">
     <image class="img" src="../../images/add_btn.png"></image>

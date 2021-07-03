@@ -66,8 +66,10 @@ Page({
     })
   },
   updateAddName: function (e) {
-    if (e.currentTarget.dataset.type == 'cate')
-      this.setData({ newCateId: e.detail.id })
+    if (e.currentTarget.dataset.type == 'catename')
+      this.setData({ newCateId: e.detail.value })
+    else if (e.currentTarget.dataset.type == 'cateid')
+        this.setData({ newCateId: e.detail.id })
     else if (e.currentTarget.dataset.type == 'name')
       this.setData({ newPassName: e.detail.value })
     else if (e.currentTarget.dataset.type == 'addr')

@@ -1,11 +1,13 @@
 /**index.wxss**/
 .cate_menu{
-  background-color: rgb(178, 200, 247);
+  background-color: #b2c8f7;
   width: 750rpx;
   text-align: center;
   height: 80rpx;
   padding-top: 10rpx;
   font-size:50rpx;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.4);
+
 }
 .pass_title{
   background-color: rgb(211, 245, 255);
