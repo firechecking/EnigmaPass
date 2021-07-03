@@ -1,13 +1,15 @@
 <!--pages/passDisplay.wxml-->
-<view class='user_info'>
-  <view>用户名：{{currentInfo.username}}</view>
-  <view>地址：{{currentInfo.address}}</view>
-  <view>版本：{{currentInfo.time}}</view>
-</view>
-<view class="pass_detail">
-  <view wx:for="{{currentInfo.settings.row}}" wx:for-item="row">
-    <block wx:for="{{currentInfo.settings.column}}" wx:for-item="column">
-      {{currentInfo.password[row*currentInfo.settings.column+column]}}
-    </block>
+<view class="page">
+  <view class='user_info'>
+    <view>用户名：{{currentInfo.username}}</view>
+    <view>地址：{{currentInfo.address}}</view>
+    <view>版本：{{currentInfo.time}}</view>
+  </view>
+  <view class="pass_detail">
+    <view class="pass_detail_row" wx:for="{{currentInfo.settings.row}}" wx:for-item="row">
+      <text class="char_block" wx:for="{{currentInfo.settings.column}}" wx:for-item="column">
+        {{currentInfo.password[row*currentInfo.settings.column+column]}}
+      </text>
+    </view>
   </view>
 </view>

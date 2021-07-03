@@ -1,1 +1,19 @@
 /* pages/passDisplay.wxss */
+.page{
+  overflow: hidden;
+}
+.user_info {
+  background-color: rgb(178, 200, 247);
+}
+.pass_detail{
+  background-color: rgb(211, 245, 255);
+  height: 1000rpx;
+}
+.pass_detail_row{
+  display: flex;
+  margin-left: 50rpx;
+}
+.char_block{
+  width: 75rpx;
+  height: 65rpx;
+}
