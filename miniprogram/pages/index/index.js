@@ -5,14 +5,14 @@ const { envList } = require('../../envList.js')
 Page({
   data: {
     passList: [],
-    cateDisplay:{'default':false,'邮箱':true}
+    cateDisplay: { 'default': true, '邮箱': true }
   },
-  refreshData:function(){
+  refreshData: function () {
     this.setData({
-      passList:app.globalData.passList.getPassList()
+      passList: app.globalData.passList.getPassList()
     })
   },
-  onLoad:function(options){
+  onLoad: function (options) {
     this.refreshData()
   },
   tapCate: function (e) {
@@ -23,7 +23,7 @@ Page({
       cateDisplay: temp
     })
   },
-  selectPass: function(e){
+  selectPass: function (e) {
     wx.navigateTo({
       url: `../passDisplay/passDisplay?uuid=${e.currentTarget.dataset.uuid}`
     })

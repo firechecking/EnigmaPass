@@ -2,12 +2,13 @@
 const app = getApp()
 Page({
   data: {
-
+    currentInfo: []
   },
-  onLoad: function(option){
-    console.log(option)
+  onLoad: function (option) {
     let uuid = option.uuid
     var passList = app.globalData.passList;
-    console.log(passList.getPassByUUID(uuid))
+    this.setData({
+      currentInfo: passList.getPassByUUID(uuid)
+    })
   }
 })
