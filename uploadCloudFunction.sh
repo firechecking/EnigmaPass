@@ -1,0 +1,1 @@
+"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e patrick-uxzpg --n quickstartFunctions --r --project "/Users/patrickali/Git/Experimental/微信小程序/EnigmaPass"
