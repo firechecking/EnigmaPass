@@ -111,6 +111,22 @@ class PassList {
       }
     })
   }
+  deletePassword(_id) {
+    var name = ''
+    for (var i = 0; i < this.password.length; i++) {
+      if (this.password[i]._id == _id) {
+        name = this.password[i].name
+        this.password.splice(i, 1)
+      }
+    }
+    this.decodeDatabase(this.category, this.password)
+
+    wx.cloud.database().collection(col_pass).doc(_id).remove({
+      success: function (res) {
+
+      }
+    })
+  }
   getPassByID(_id) {
     var r_pass = null
     this.data.forEach(function (ps) {
