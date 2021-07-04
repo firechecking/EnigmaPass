@@ -21,8 +21,9 @@ function randstr(num, dic) {
 class PassList {
   constructor(url, parameter) {
     this.db = wx.cloud.database();
-    this.category = [];
-    this.password = [];
+    this.category = [{ "_id": "123", "name": "default" }];
+    this.password = [{ "_id": "1", "name": "baidu", "username": "zzz", "address": "www.baidu.com", "cate_id": "123", "father_id": "", "password": ",@Vj.ka$!YkKF8k41hak,.h;5D11;.1ls4f13d#f65lVV2kjs$hF5#488;!j7S4sF#D2ldS1KgKV!ssS$#g$.@9V7k.@h3@s!F,DDh49g34j@F0V7f!dl@@05;s#Dk13,6K5KaF#7l.,sflkD;alFDa", "settings": { "row": 15, "column": 10, "dict": "0123456789fghjkmnpqrtuvwxyzDEFGMNPQRSTUVW~!@#$%^&*()_+{};<>,." }, "add_time": "2021-07-03 18:27:56", "history": [] }];
+    this.decodeDatabase(this.category, this.password)
   }
   async downloadCollection(colname) {
     const db = wx.cloud.database()
@@ -93,15 +94,31 @@ class PassList {
     this.decodeDatabase(this.category, this.password)
     wx.cloud.database().collection(col_pass).add({ data: newData })
   }
+  updatePassword(_id, newPass) {
+    for (var i = 0; i < this.password.length; i++) {
+      if (this.password[i]._id == _id)
+        this.password[i] = newPass
+    }
+    this.decodeDatabase(this.category, this.password)
+    console.log(this.password)
+    wx.cloud.database().collection(col_pass).doc(_id).update({
+      data: {
+        password: newPass.password,
+        settings: newPass.settings,
+        add_time: new Date()
+      }
+    })
+  }
   getPassByID(_id) {
     var r_pass = null
     this.data.forEach(function (ps) {
       ps.passes.forEach(function (pass) {
         if (pass._id == _id)
-          r_pass = pass
+          r_pass = Object.assign({}, pass)
       })
     });
     return r_pass
   }
 }
 export { PassList }
+exports.randstr = randstr

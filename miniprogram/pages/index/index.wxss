@@ -17,11 +17,11 @@
   font-size: 50rpx;
   border-bottom:2rpx solid rgba(0, 0, 0, 0.2);
 }
-.add_btn{
+/* .add_btn{
   background: rgba(0,0,0,0);
-}
+} */
 .add_btn .img{
-  padding: 7rpx;
+  padding: 0rpx;
   width: 150rpx;
   height: 150rpx;
   position:fixed;

@@ -1,21 +1,36 @@
 /* pages/passDisplay.wxss */
-.page{
+.page {
   overflow: hidden;
 }
+
 .user_info {
   background-color: rgb(178, 200, 247);
   padding: 20rpx;
 }
-.pass_detail{
+
+.pass_detail {
   background-color: rgb(211, 245, 255);
   height: 1000rpx;
+  z-index: 1000;
 }
-.pass_detail_row{
+
+.pass_detail_row {
   display: flex;
   margin-left: 50rpx;
 }
-.char_block{
+
+.char_block {
   width: 75rpx;
   height: 65rpx;
   font-size: large;
+}
+
+.option_btn {
+  width: 80rpx !important;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.4);
 }

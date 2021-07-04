@@ -25,6 +25,7 @@ Page({
     app.globalData.passList.downstreamDb().then(() => {
       this.refreshData()
     });
+    // this.refreshData()
   },
   tapCate: function (e) {
     var name = e.currentTarget.dataset.name
