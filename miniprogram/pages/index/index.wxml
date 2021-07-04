@@ -26,4 +26,6 @@
   <button class="add_btn" bindtap="showAddSheet">
     <image class="img" src="../../images/add_btn.png"></image>
   </button>
+  <!-- <button class="add_btn" bindtap="showEditBtn" style="bottom: 150rpx;">---
+  </button> -->
 </view>
