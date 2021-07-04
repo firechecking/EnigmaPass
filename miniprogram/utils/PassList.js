@@ -59,7 +59,7 @@ class PassList {
     var category = []
     var data = new Array;
     password.forEach(function (pass) {
-      if (pass.cate_id.length<1)
+      if (pass.cate_id.length < 1)
         pass.cate_id = '未分类'
       if (category.indexOf(pass.cate_id) < 0) {
         category.push(pass.cate_id)
@@ -94,27 +94,23 @@ class PassList {
         this.password[i] = newPass
     }
     this.decodeDatabase(this.password)
+    var _pass = null
+    _pass = Object.assign({}, newPass)
+    delete _pass['_id']
+    delete _pass['_openid']
     wx.cloud.database().collection(col_pass).doc(_id).update({
-      data: {
-        password: newPass.password,
-        settings: newPass.settings,
-        add_time: new Date()
-      }
+      data: _pass
     })
   }
   deletePassword(_id) {
-    var name = ''
     for (var i = 0; i < this.password.length; i++) {
       if (this.password[i]._id == _id) {
-        name = this.password[i].name
         this.password.splice(i, 1)
       }
     }
     this.decodeDatabase(this.password)
-
     wx.cloud.database().collection(col_pass).doc(_id).remove({
       success: function (res) {
-
       }
     })
   }
@@ -131,3 +127,4 @@ class PassList {
 }
 export { PassList }
 exports.randstr = randstr
+exports.default_settings = default_settings

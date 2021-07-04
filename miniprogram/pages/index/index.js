@@ -29,6 +29,9 @@ Page({
     });
     // this.refreshData()
   },
+  onShow:function(){
+    this.refreshData()
+  },
   tapCate: function (e) {
     var name = e.currentTarget.dataset.name
     let temp = this.data.cateDisplay

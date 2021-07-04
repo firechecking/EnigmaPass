@@ -1,0 +1,27 @@
+<template name="oneinput">
+  <view class="page-section">
+    <view class="weui-cells__title">{{desc}}</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input wx:if="{{type=='number'}}" type="number" maxlength="2" class="weui-input" data-key="{{key}}" focus value="{{value}}"
+          bindinput="onChangeSettingValue" />
+        <input wx:if="{{type=='input'}}" class="weui-input" data-key="{{key}}" focus value="{{value}}"
+          bindinput="onChangeSettingValue" />
+        <textarea wx:if="{{type=='textarea'}}" class="weui-input" data-key="{{key}}" style="height:100rpx;"
+          value="{{value}}" bindinput="onChangeSettingValue" />
+      </view>
+    </view>
+  </view>
+</template>
+
+<scroll-view class="page">
+  <view class="page-body">
+    <block wx:for="{{key}}" wx:key="*this" wx:for-index="_id">
+      <template is="oneinput" data="{{key:_id,value:value[_id],type:showType[_id],desc:desc[_id]}}"></template>
+    </block>
+  </view>
+  <view style="display:flex">
+    <button type="primary" plain="true" bindtap="updateSettings">确定修改</button>
+    <button type="warn" plain="true" bindtap="resetSettings">取消修改</button>
+  </view>
+</scroll-view>

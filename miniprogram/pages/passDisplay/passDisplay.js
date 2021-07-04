@@ -40,7 +40,9 @@ Page({
             })
           }
           if (res.tapIndex == 1)
-            console.log(res)
+            wx.navigateTo({
+              url: `../passSetting/passSetting?id=${that.data.currentInfo._id}`
+            })
         }
       }
     })

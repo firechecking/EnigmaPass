@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/passDisplay/passDisplay"
+    "pages/passDisplay/passDisplay",
+    "pages/passSetting/passSetting"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -11,7 +12,7 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "darkmode":false,
+  "darkmode": false,
   "style": "v2",
   "useExtendedLib": {
     "weui": true
