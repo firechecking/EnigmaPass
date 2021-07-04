@@ -11,6 +11,7 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
+  "darkmode":false,
   "style": "v2",
   "useExtendedLib": {
     "weui": true

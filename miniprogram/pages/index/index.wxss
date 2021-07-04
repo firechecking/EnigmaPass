@@ -28,7 +28,7 @@
   position: fixed;
   right: 20rpx;
   bottom: 20rpx;
-  background-color: coral;
+  background-color: #b2c8f7;
   border-radius: 50%;
 }
 

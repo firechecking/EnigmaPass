@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="page">
+<view class="page" data-weui-theme="white">
   <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
     <mp-cells ext-class="my-cells" title="{{cateName.title}}">
       <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this">
@@ -14,17 +14,14 @@
     </mp-cells>
   </view>
 
-  <modal hidden="{{!showAddCate}}" title="添加分组" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
-    bindconfirm="addCategory">
-    <input type='text' data-type="catename" placeholder="请输入分组名称" bindinput="updateAddName" />
-  </modal>
   <modal hidden="{{!showAddPass}}" title="添加密码" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
     bindconfirm="addPassword">
     <input type='text' data-type="name" placeholder="请输入网站名称" bindinput="updateAddName" />
     <input type='text' data-type="addr" placeholder="请输入网站地址" bindinput="updateAddName" />
     <input type='text' data-type="uname" placeholder="请输入用户名" bindinput="updateAddName" />
-    <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName">
-    </selector>
+    <input type='text' data-type="cateid" placeholder="请输入分组名称" bindinput="updateAddName" />
+    <!-- <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName">
+    </selector> -->
   </modal>
   <button class="add_btn" bindtap="showAddPass">
     <image class="img" src="../../images/add_btn.png"></image>

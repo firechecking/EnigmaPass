@@ -127,8 +127,8 @@ image {
   left: 52px
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   page {
     background-color: #1F1F1F;
   }
-}
+} */
