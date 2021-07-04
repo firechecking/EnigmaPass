@@ -5,7 +5,6 @@ const { envList } = require('../../envList.js')
 Page({
   data: {
     passList: [],
-    category: [],
     cateDisplay: { 'default': true, '邮箱': true },
     showAddCate: false,
     showAddPass: false,
@@ -19,10 +18,9 @@ Page({
     }]
   },
   refreshData: function () {
-    console.log(app.globalData.passList.category)
+    console.log(app.globalData.passList.data)
     this.setData({
-      passList: app.globalData.passList.getPassList(),
-      category: app.globalData.passList.category
+      passList: app.globalData.passList.getPassList()
     })
   },
   onLoad: function (options) {
@@ -43,12 +41,6 @@ Page({
     wx.navigateTo({
       url: `../passDisplay/passDisplay?id=${e.currentTarget.dataset.id}`
     })
-  },
-  addCategory: function (e) {
-    app.globalData.passList.addCategory(this.data.newCateId)
-    this.refreshData()
-    console.log(this.data.newCateId)
-    this.cancelModal()
   },
   addPassword: function (e) {
     app.globalData.passList.addPassword(
@@ -81,7 +73,6 @@ Page({
       newPassName: '',
       newPassAddr: '',
       newPassUName: '',
-      showAddCate: false,
       showAddPass: false,
     })
   },
@@ -97,24 +88,9 @@ Page({
     else if (e.currentTarget.dataset.type == 'uname')
       this.setData({ newPassUName: e.detail.value })
   },
-  showAddSheet: function (e) {
-    var that = this
-    wx.showActionSheet({
-      itemList: ['新建分组', '新建密码'],
-      success: function (res) {
-        if (!res.cancel) {
-          if (res.tapIndex == 0)
-            that.setData({
-              showAddCate: true,
-              showAddPass: false
-            })
-          if (res.tapIndex == 1)
-            that.setData({
-              showAddCate: false,
-              showAddPass: true
-            })
-        }
-      }
+  showAddPass: function (e) {
+    this.setData({
+      showAddPass: true
     })
   }
 })

@@ -26,9 +26,7 @@
     <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName">
     </selector>
   </modal>
-  <button class="add_btn" bindtap="showAddSheet">
+  <button class="add_btn" bindtap="showAddPass">
     <image class="img" src="../../images/add_btn.png"></image>
   </button>
-  <!-- <button class="add_btn" bindtap="showEditBtn" style="bottom: 150rpx;">---
-  </button> -->
 </view>
