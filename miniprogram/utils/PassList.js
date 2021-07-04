@@ -30,6 +30,8 @@ class PassList {
     const MAX_LIMIT = 100
     const countResult = await db.collection(colname).count()
     const total = countResult.total
+    if (total < 1)
+      return { data: [] }
     // 计算需分几次取
     const batchTimes = Math.ceil(total / 100)
     // 承载所有读操作的 promise 的数组
