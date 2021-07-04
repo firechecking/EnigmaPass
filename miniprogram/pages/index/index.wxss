@@ -38,3 +38,8 @@
   /* margin-top: -20rpx; */
   /* margin-left: -15rpx; */
 }
+input {
+  margin: 20rpx;
+  height: 42rpx;
+  font-size: 35rpx;
+}

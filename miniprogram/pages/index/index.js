@@ -43,14 +43,22 @@ Page({
     })
   },
   addPassword: function (e) {
-    app.globalData.passList.addPassword(
-      this.data.newPassName,
-      this.data.newPassAddr,
-      this.data.newPassUName,
-      this.data.newCateId
-    )
-    this.refreshData()
-    this.cancelModal()
+    if (!(this.data.newPassName && this.data.newPassAddr && this.data.newPassUName && this.data.newCateId)) {
+      wx.showToast({
+        title: '信息不完整',
+        icon:'error'
+      })
+    }
+    else {
+      app.globalData.passList.addPassword(
+        this.data.newPassName,
+        this.data.newPassAddr,
+        this.data.newPassUName,
+        this.data.newCateId
+      )
+      this.refreshData()
+      this.cancelModal()
+    }
   },
   deletePass: function (e) {
     var that = this

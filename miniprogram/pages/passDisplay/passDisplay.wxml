@@ -4,7 +4,7 @@
     <view>用户名：{{currentInfo.username}}</view>
     <view>地址：{{currentInfo.address}}</view>
     <view>版本：{{add_time}}</view>
-    <button class="option_btn" bindtap="showOptionSheet">设置</button>
+    <button class="option_btn" bindtap="showOptionSheet">修改</button>
     <button class="option_btn" bindtap="savePassword" style="right: 100rpx;background-color: rgb(211, 245, 255);"
       wx:if="{{hasChanged}}">保存</button>
   </view>
