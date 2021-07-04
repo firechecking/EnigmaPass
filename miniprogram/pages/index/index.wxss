@@ -1,4 +1,6 @@
 /**index.wxss**/
+@import "../common.wxss";
+
 .cate_menu {
   background-color: #b2c8f7;
   width: 750rpx;
@@ -7,7 +9,6 @@
   padding-top: 10rpx;
   font-size: 50rpx;
   border-top: 2rpx solid rgba(255, 255, 255, 0.4);
-
 }
 
 .pass_title {

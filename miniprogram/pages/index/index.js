@@ -12,7 +12,12 @@ Page({
     newCateId: '',
     newPassName: '',
     newPassAddr: '',
-    newPassUName: ''
+    newPassUName: '',
+    slideButtons: [{
+      text: '删除',
+      type: 'warn',
+      src: global.isDemo ? '/page/weui/example/cell/icon_love.svg' : '/example/cell/icon_love.svg', // icon的路径
+    }]
   },
   refreshData: function () {
     console.log(app.globalData.passList.category)

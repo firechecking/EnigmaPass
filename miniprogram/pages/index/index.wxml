@@ -1,17 +1,19 @@
 <!--index.wxml-->
-<view class="container">
-  <!-- <input class="weui-input" placeholder="搜索" /> -->
-  <view class='pass_detail'>
-    <!-- 类别 -->
-    <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
-      <view class="cate_menu" bindtap="tapCate" data-name="{{cateName.title}}">{{cateName.title}}</view>
-      <!-- 当前类别密码列表 -->
-      <view class="pass_title" wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this"
-        wx:if="{{cateDisplay[cateName.title]}}" data-id='{{itemName._id}}' bindtap="selectPass">
-        {{itemName.name}}
+<view class="page">
+  <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
+    <mp-cells ext-class="my-cells" title="{{cateName.title}}">
+      <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this">
+        <mp-slideview show="{{false}}" buttons="{{slideButtons}}" bindbuttontap="">
+          <mp-cell link data-id='{{itemName._id}}' bindtap="selectPass">
+            <view link>{{itemName.name}}</view>
+            <view slot="footer">{{itemName.username}}</view>
+            <view slot="footer">{{itemName.address}}</view>
+          </mp-cell>
+        </mp-slideview>
       </view>
-    </view>
+    </mp-cells>
   </view>
+
   <modal hidden="{{!showAddCate}}" title="添加分组" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
     bindconfirm="addCategory">
     <input type='text' data-type="catename" placeholder="请输入分组名称" bindinput="updateAddName" />
@@ -21,7 +23,8 @@
     <input type='text' data-type="name" placeholder="请输入网站名称" bindinput="updateAddName" />
     <input type='text' data-type="addr" placeholder="请输入网站地址" bindinput="updateAddName" />
     <input type='text' data-type="uname" placeholder="请输入用户名" bindinput="updateAddName" />
-    <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName"></selector>
+    <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName">
+    </selector>
   </modal>
   <button class="add_btn" bindtap="showAddSheet">
     <image class="img" src="../../images/add_btn.png"></image>
