@@ -11,18 +11,24 @@
 .pass_detail {
   background-color: rgb(211, 245, 255);
   height: 1000rpx;
-  z-index: 1000;
+  flex-direction: column;
 }
 
 .pass_detail_row {
   display: flex;
-  margin-left: 50rpx;
+  flex-direction: row;
+  /* padding-left: 15rpx; */
+  align-items: flex-start;
 }
 
 .char_block {
   width: 75rpx;
-  height: 65rpx;
+  line-height: 20rpx;
+  margin-top: 5rpx;
   font-size: large;
+  text-align: center;
+  /* border: 2rpx solid red; */
+  padding-bottom: 15rpx;
 }
 
 .option_btn {

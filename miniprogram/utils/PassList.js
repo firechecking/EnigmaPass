@@ -20,7 +20,7 @@ function randstr(num, dic) {
 class PassList {
   constructor(url, parameter) {
     this.db = wx.cloud.database();
-    this.password = [{ "_id": "1", "name": "baidu", "username": "zzz", "address": "www.baidu.com", "cate_id": "123", "father_id": "", "password": ",@Vj.ka$!YkKF8k41hak,.h;5D11;.1ls4f13d#f65lVV2kjs$hF5#488;!j7S4sF#D2ldS1KgKV!ssS$#g$.@9V7k.@h3@s!F,DDh49g34j@F0V7f!dl@@05;s#Dk13,6K5KaF#7l.,sflkD;alFDa", "settings": { "row": 15, "column": 10, "dict": "0123456789fghjkmnpqrtuvwxyzDEFGMNPQRSTUVW~!@#$%^&*()_+{};<>,." }, "add_time": "2021-07-03 18:27:56", "history": [] }];
+    this.password = [{ "_id": "1", "name": "alibaba", "username": "贤人", "address": "www.alibaba-inc.com", "cate_id": "网站", "father_id": "", "password": ",@Vj.ka$!YkKF8k41hak,.h;5D11;.1ls4f13d#f65lVV2kjs$hF5#488;!j7S4sF#D2ldS1KgKV!ssS$#g$.@9V7k.@h3@s!F,DDh49g34j@F0V7f!dl@@05;s#Dk13,6K5KaF#7l.,sflkD;alFDa", "settings": { "row": 15, "column": 10, "dict": "0123456789fghjkmnpqrtuvwxyzDEFGMNPQRSTUVW~!@#$%^&*()_+{};<>,." }, "add_time": "2021-07-03 18:27:56"}];
     this.decodeDatabase(this.password)
   }
   async _downloadCollection(colname) {

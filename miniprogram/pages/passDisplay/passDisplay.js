@@ -6,7 +6,9 @@ Page({
     currentInfo: [],
     add_time: '',
     _id: '',
-    hasChanged: false
+    hasChanged: false,
+    pasteStr: '',
+    timer: null
   },
   refreshData: function () {
     var passList = app.globalData.passList;
@@ -46,6 +48,28 @@ Page({
         }
       }
     })
+  },
+  textPaste: function (e) {
+    var that = this
+    this.data.pasteStr += e.currentTarget.dataset.char
+    wx.showToast({
+      title: this.data.pasteStr,
+      duration: 1500,
+      icon: 'none',
+      success: function () {
+        if (that.timer)
+          clearTimeout(that.timer)
+        that.timer = setTimeout(function () {
+          wx.setClipboardData({
+            data: that.data.pasteStr,
+            success: function (res) {
+              that.data.pasteStr = ''
+            }
+          })
+        }, 1500)
+      }
+    })
+    console.log(this.data.pasteStr)
   },
   onLoad: function (option) {
     this.data._id = option.id

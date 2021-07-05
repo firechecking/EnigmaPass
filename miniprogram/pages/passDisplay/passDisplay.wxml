@@ -11,7 +11,8 @@
 
   <view class="pass_detail">
     <view class="pass_detail_row" wx:for="{{currentInfo.settings.row}}" wx:for-item="row">
-      <text class="char_block" wx:for="{{currentInfo.settings.column}}" wx:for-item="column">
+      <text class="char_block" wx:for="{{currentInfo.settings.column}}" bindtap='textPaste' wx:for-item="column"
+        data-char='{{currentInfo.password[row*currentInfo.settings.column+column]}}'>
         {{currentInfo.password[row*currentInfo.settings.column+column]}}
       </text>
     </view>

@@ -80,10 +80,6 @@ Page({
   },
   cancelModal: function () {
     this.setData({
-      newCateId: '',
-      newPassName: '',
-      newPassAddr: '',
-      newPassUName: '',
       showAddPass: false,
     })
   },
