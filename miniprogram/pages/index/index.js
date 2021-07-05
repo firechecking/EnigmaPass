@@ -18,7 +18,6 @@ Page({
     }]
   },
   refreshData: function () {
-    console.log(app.globalData.passList.data)
     this.setData({
       passList: app.globalData.passList.getPassList()
     })

@@ -33,7 +33,7 @@ Page({
     })
   },
   onChangeSettingValue: function (e) {
-    console.log(e)
+    // console.log(e)
     if (this.data.showType[e.currentTarget.dataset.key] == 'number')
       this.data.tempValue[e.currentTarget.dataset.key] = parseInt(e.detail.value)
     else

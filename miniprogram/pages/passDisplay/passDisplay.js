@@ -54,7 +54,7 @@ Page({
     this.data.pasteStr += e.currentTarget.dataset.char
     wx.showToast({
       title: this.data.pasteStr,
-      duration: 1500,
+      duration: 1300,
       icon: 'none',
       success: function () {
         if (that.timer)
@@ -66,10 +66,9 @@ Page({
               that.data.pasteStr = ''
             }
           })
-        }, 1500)
+        }, 1100)
       }
     })
-    console.log(this.data.pasteStr)
   },
   onLoad: function (option) {
     this.data._id = option.id
