@@ -23,12 +23,16 @@
 
 .char_block {
   width: 75rpx;
-  line-height: 20rpx;
-  margin-top: 5rpx;
+  line-height: 60rpx;
+  /* margin-top: 5rpx; */
   font-size: large;
   text-align: center;
   /* border: 2rpx solid red; */
-  padding-bottom: 15rpx;
+  /* padding-bottom: 10rpx; */
+}
+
+.char_block_hover {
+  background-color: rgb(178, 200, 247);
 }
 
 .option_btn {
