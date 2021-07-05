@@ -42,6 +42,11 @@ Page({
   },
   updateSettings: function (e) {
     var _pass = app.globalData.passList.getPassByID(this.data._id)
+    if (_pass['father_id'].length<1)
+    {
+      _pass['father_id'] = guid()
+      app.globalData.passList.updatePassword(_pass)
+    }
     for (var key in _pass) {
       var idx = this.data.key.indexOf(key)
       if (idx > -1)
@@ -52,7 +57,9 @@ Page({
       if (idx > -1)
         _pass.settings[key] = this.data.tempValue[idx]
     }
-    app.globalData.passList.updatePassword(this.data._id, _pass)
+    _pass['_id'] = utils.guid()
+    _pass['add_time'] = new Date()
+    app.globalData.passList.addPasswordObj(_pass)
     this.refreshData()
     wx.navigateBack()
   },

@@ -18,7 +18,7 @@ Page({
     this.setData({
       _id: this.data._id,
       currentInfo: passList.getPassByID(this.data._id),
-      add_time: utils.dateFormat(passList.getPassByID(this.data._id).add_time,"yyyy-MM-dd HH:mm:ss")
+      add_time: utils.dateFormat(passList.getPassByID(this.data._id).add_time, "yyyy-MM-dd HH:mm:ss")
     })
   },
   savePassword: function () {
