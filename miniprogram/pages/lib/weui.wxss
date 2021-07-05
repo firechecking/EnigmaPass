@@ -8,55 +8,55 @@
    --weui-BTN-DISABLED-FONT-COLOR: rgba(0, 0, 0, .2)
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-BTN-DISABLED-FONT-COLOR: hsla(0, 0%, 100%, .2)
    }
- }
+ } */
  
  [data-weui-theme=light],
  page {
    --weui-BTN-DEFAULT-BG: #f2f2f2
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-BTN-DEFAULT-BG: hsla(0, 0%, 100%, .08)
    }
- }
+ } */
  
  [data-weui-theme=light],
  page {
    --weui-BTN-DEFAULT-COLOR: #06ae56
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-BTN-DEFAULT-COLOR: hsla(0, 0%, 100%, .8)
    }
- }
- 
+ }*/
+  
  [data-weui-theme=light],
  page {
    --weui-BTN-DEFAULT-ACTIVE-BG: #e6e6e6
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-BTN-DEFAULT-ACTIVE-BG: hsla(0, 0%, 100%, .126)
    }
- }
+ } */
  
  [data-weui-theme=light],
  page {
    --weui-DIALOG-LINE-COLOR: rgba(0, 0, 0, .1)
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-DIALOG-LINE-COLOR: hsla(0, 0%, 100%, .1)
    }
- }
+ } */
  
  page {
    line-height: 1.6;
@@ -104,7 +104,7 @@
    --weui-TAG-BACKGROUND-BLACK: rgba(0, 0, 0, .05)
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-BG-0: #191919;
      --weui-BG-1: #1f1f1f;
@@ -140,18 +140,18 @@
      --weui-TAG-TEXT-BLACK: hsla(0, 0%, 100%, .5);
      --weui-TAG-BACKGROUND-BLACK: hsla(0, 0%, 100%, .05)
    }
- }
+ } */
  
  [data-weui-theme=light],
  page {
    --weui-BG-COLOR-ACTIVE: #ececec
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    page{
      --weui-BG-COLOR-ACTIVE: #373737
    }
- }
+ } */
  
  [class*=" weui-icon-"],
  [class^=weui-icon-] {
@@ -1531,11 +1531,11 @@
    background-color: #ededed
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-uploader__input-box {
      background-color: #2e2e2e
    }
- }
+ } */
  
  .weui-uploader__input-box:after,
  .weui-uploader__input-box:before {
@@ -1548,12 +1548,12 @@
    background-color: #a3a3a3
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-uploader__input-box:after,
    .weui-uploader__input-box:before {
      background-color: #6d6d6d
    }
- }
+ } */
  
  .weui-uploader__input-box:before {
    width: 2px;
@@ -2898,11 +2898,11 @@
    background-color: #4c4c4c
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-toast {
      background-color: #606060
    }
- }
+ } */
  
  .weui-icon_toast {
    display: block
@@ -3411,12 +3411,12 @@
    transform: translateZ(0)
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-picker__mask {
      background-image: -webkit-linear-gradient(top, rgba(35, 35, 35, .95), rgba(35, 35, 35, .6)), -webkit-linear-gradient(bottom, rgba(35, 35, 35, .95), rgba(35, 35, 35, .6));
      background-image: linear-gradient(180deg, rgba(35, 35, 35, .95), rgba(35, 35, 35, .6)), linear-gradient(0deg, rgba(35, 35, 35, .95), rgba(35, 35, 35, .6))
    }
- }
+ } */
  
  .weui-picker__indicator {
    width: 100%;
@@ -4120,11 +4120,11 @@
    background: #c7c7cc
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-slideview__btn-group_default .weui-slideview__btn {
      background: var(--weui-BG-4)
    }
- }
+ } */
  
  .weui-slideview__btn-group_default~.weui-slideview__btn-group_default:before {
    content: " ";
@@ -4141,11 +4141,11 @@
    transform: scaleX(.5)
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-slideview__btn-group_default~.weui-slideview__btn-group_default:before {
      border-left-color: var(--weui-FG-3)
    }
- }
+ } */
  
  .weui-slideview__btn-group_default:first-child:before {
    display: none
@@ -4198,11 +4198,11 @@
    background-color: #fff
  }
  
- @media(prefers-color-scheme: dark) {
+ /* @media(prefers-color-scheme: dark) {
    .weui-slideview_icon .weui-slideview__btn {
      background-color: var(--weui-BG-4)
    }
- }
+ } */
  
  .weui-slideview_icon .weui-slideview__btn__icon {
    display: inline-block;

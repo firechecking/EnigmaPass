@@ -104,11 +104,11 @@ image {
   padding-bottom: calc(10px + env(safe-area-inset-bottom));
   text-align: center
 }
-
+/* 
 [data-weui-theme=dark] .page__ft image {
   -webkit-filter: invert(100) hue-rotate(180deg);
   filter: invert(100) hue-rotate(180deg)
-}
+} */
 
 .page__title {
   text-align: left;
