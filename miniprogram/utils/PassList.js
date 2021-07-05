@@ -17,10 +17,26 @@ function randstr(num, dic) {
   }
   return sb.toString();
 }
+function dateFormat(date,fmt) {
+  var o = {
+    "M+": date.getMonth() + 1, //月份
+    "d+": date.getDate(), //日
+    "H+": date.getHours(), //小时
+    "m+": date.getMinutes(), //分
+    "s+": date.getSeconds(), //秒
+    "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+    "S": date.getMilliseconds() //毫秒
+  };
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+}
+
 class PassList {
   constructor(url, parameter) {
     this.db = wx.cloud.database();
-    this.password = [{ "_id": "1", "name": "alibaba", "username": "贤人", "address": "www.alibaba-inc.com", "cate_id": "网站", "father_id": "", "password": ",@Vj.ka$!YkKF8k41hak,.h;5D11;.1ls4f13d#f65lVV2kjs$hF5#488;!j7S4sF#D2ldS1KgKV!ssS$#g$.@9V7k.@h3@s!F,DDh49g34j@F0V7f!dl@@05;s#Dk13,6K5KaF#7l.,sflkD;alFDa", "settings": { "row": 15, "column": 10, "dict": "0123456789fghjkmnpqrtuvwxyzDEFGMNPQRSTUVW~!@#$%^&*()_+{};<>,." }, "add_time": "2021-07-03 18:27:56"}];
+    this.password = [{ "_id": "1", "name": "QQ", "username": "164049406", "address": "mail.qq.com", "cate_id": "邮箱", "father_id": "", "password": ",@Vj.ka$!YkKF8k41hak,.h;5D11;.1ls4f13d#f65lVV2kjs$hF5#488;!j7S4sF#D2ldS1KgKV!ssS$#g$.@9V7k.@h3@s!F,DDh49g34j@F0V7f!dl@@05;s#Dk13,6K5KaF#7l.,sflkD;alFDa", "settings": { "row": 15, "column": 10, "dict": "0123456789fghjkmnpqrtuvwxyzDEFGMNPQRSTUVW~!@#$%^&*()_+{};<>,." }, "add_time": new Date("2021-07-03 18:27:56") }];
     this.decodeDatabase(this.password)
   }
   async _downloadCollection(colname) {
@@ -128,3 +144,4 @@ class PassList {
 export { PassList }
 exports.randstr = randstr
 exports.default_settings = default_settings
+exports.dateFormat = dateFormat

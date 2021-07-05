@@ -16,10 +16,10 @@
 
   <modal hidden="{{!showAddPass}}" title="添加密码" confirm-text="确认" cancel-text="取消" bindcancel="cancelModal"
     bindconfirm="addPassword">
-    <input type='text' data-type="cateid" placeholder="请输入分组名" bindinput="updateAddName" />
-    <input type='text' data-type="name" placeholder="请输入网站名" bindinput="updateAddName" />
-    <input type='text' data-type="uname" placeholder="请输入用户名" bindinput="updateAddName" />
-    <input type='text' data-type="addr" placeholder="请输入网站描述" bindinput="updateAddName" />
+    <input type='text' data-type="cateid" maxlength="50" placeholder="请输入分组名" bindinput="updateAddName" />
+    <input type='text' data-type="name" maxlength="50" placeholder="请输入网站名" bindinput="updateAddName" />
+    <input type='text' data-type="uname" maxlength="50" placeholder="请输入用户名" bindinput="updateAddName" />
+    <input type='text' data-type="addr" maxlength="50" placeholder="请输入网站描述" bindinput="updateAddName" />
     <!-- <selector id="selector" data-type="cateid" options="{{category}}" key="_id" text="name" bind:change="updateAddName">
     </selector> -->
   </modal>

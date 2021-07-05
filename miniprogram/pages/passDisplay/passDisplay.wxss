@@ -10,7 +10,6 @@
 
 .pass_detail {
   background-color: rgb(211, 245, 255);
-  height: 1000rpx;
   flex-direction: column;
 }
 

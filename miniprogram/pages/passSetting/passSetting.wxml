@@ -5,9 +5,9 @@
       <view class="weui-cell weui-cell_input">
         <input wx:if="{{type=='number'}}" type="number" maxlength="2" class="weui-input" data-key="{{key}}" focus value="{{value}}"
           bindinput="onChangeSettingValue" />
-        <input wx:if="{{type=='input'}}" class="weui-input" data-key="{{key}}" focus value="{{value}}"
+        <input wx:if="{{type=='input'}}" class="weui-input" maxlength="50" data-key="{{key}}" focus value="{{value}}"
           bindinput="onChangeSettingValue" />
-        <textarea wx:if="{{type=='textarea'}}" class="weui-input" data-key="{{key}}" style="height:100rpx;"
+        <textarea wx:if="{{type=='textarea'}}" class="weui-input" maxlength="200" data-key="{{key}}" style="height:100rpx;"
           value="{{value}}" bindinput="onChangeSettingValue" />
       </view>
     </view>

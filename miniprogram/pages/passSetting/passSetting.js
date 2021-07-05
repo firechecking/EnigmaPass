@@ -7,7 +7,7 @@ Page({
     key: ['row', 'column', 'dict', 'cate_id', 'username', 'address'],
     value: [15, 10, 'dsfds', 'default', 'uname', 'httpxxx'],
     showType: ['number', 'number', 'textarea', 'input', 'input', 'input'],
-    desc: ['密码本行数(小于20)', '密码本列数(小于20)', '密码本词典', "分组", '登陆用户名', "网站描述"],
+    desc: ['密码本行数(建议15)', '密码本列数(建议10)', '密码本词典', "分组", '登陆用户名', "网站描述"],
     tempValue: {}
   },
   refreshData: function () {
