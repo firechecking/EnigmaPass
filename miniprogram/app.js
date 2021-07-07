@@ -16,7 +16,7 @@ App({
       var passList = new PassList();
       this.globalData = {
         'passList': passList,
-        'history_max': 3,
+        'history_max': 5,
         'history_idx': 0
       };
     }
