@@ -14,7 +14,10 @@ App({
         traceUser: true,
       })
       var passList = new PassList();
-      this.globalData = { 'passList': passList };
+      this.globalData = {
+        'passList': passList,
+        'history_max': 3
+      };
     }
   }
 })

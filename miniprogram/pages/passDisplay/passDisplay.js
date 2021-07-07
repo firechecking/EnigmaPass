@@ -1,31 +1,48 @@
 // pages/passDisplay.js
 const app = getApp()
+const passList = app.globalData.passList
 var utils = require('../../utils/PassList')
 Page({
   data: {
     currentInfo: [],
-    add_time: '',
     _id: '',
+    histories: ['00000000', '111111111'],
+    history_idx: 0,
     hasChanged: false,
     pasteStr: '',
     timer: null
   },
   refreshData: function () {
-    var passList = app.globalData.passList;
-    wx.setNavigationBarTitle({
-      title: passList.getPassByID(this.data._id).name
+    let _histories = []
+    passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true).forEach(function (_pass) {
+      _histories.push(utils.dateFormat(_pass.add_time, "yyyy-MM-dd HH:mm:ss"))
     })
     this.setData({
       _id: this.data._id,
       currentInfo: passList.getPassByID(this.data._id),
-      add_time: utils.dateFormat(passList.getPassByID(this.data._id).add_time, "yyyy-MM-dd HH:mm:ss")
+      histories: _histories
+    })
+    wx.setNavigationBarTitle({
+      title: passList.getPassByID(this.data._id).name
     })
   },
   savePassword: function () {
-    app.globalData.passList.updatePassword(this.data._id, this.data.currentInfo)
+    var newPass = Object.assign({}, this.data.currentInfo)
+    delete newPass['_openid']
+    newPass['add_time'] = new Date()
+    
+    if (this.data.histories.length < app.globalData.history_max) {
+      newPass['_id'] = utils.guid()
+      passList.addPasswordObj(newPass)
+    } else {
+      let passes = passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true)
+      passList.updatePassword(passes[passes.length-1]._id, newPass)
+    }
     this.setData({
-      'hasChanged': false
+      'hasChanged': false,
+      'history_idx': 0
     })
+    this.refreshData()
   },
   showOptionSheet: function () {
     var that = this
@@ -69,6 +86,17 @@ Page({
         }, 1100)
       }
     })
+  },
+  bindHistoryChange: function (e) {
+    console.log(e)
+    var newPass = passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true)[e.detail.value]
+    this.setData({
+      history_idx: e.detail.value,
+      currentInfo: newPass,
+      _id: newPass._id,
+      hasChanged: false
+    })
+    console.log(e.detail.value)
   },
   onLoad: function (option) {
     this.data._id = option.id

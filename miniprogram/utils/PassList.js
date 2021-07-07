@@ -87,6 +87,7 @@ class PassList {
     var category_ids = []
     var data = new Array
     var that = this
+    this.father_dict = {}
     // collect all category_ids and father_dict
     password.forEach(function (pass) {
       pass = that.fixPassword(pass)
@@ -145,8 +146,11 @@ class PassList {
   }
   updatePassword(_id, newPass) {
     for (var i = 0; i < this.password.length; i++) {
-      if (this.password[i]._id == _id)
+      if (this.password[i]._id == _id) {
         this.password[i] = newPass
+        this.password[i]._id = _id
+      }
+
     }
     this.decodeDatabase(this.password)
     var _pass = null
@@ -171,12 +175,10 @@ class PassList {
   }
   getPassByID(_id) {
     var r_pass = null
-    this.data.forEach(function (ps) {
-      ps.passes.forEach(function (pass) {
-        if (pass._id == _id)
-          r_pass = Object.assign({}, pass)
-      })
-    });
+    this.password.forEach(function (pass) {
+      if (pass._id == _id)
+        r_pass = Object.assign({}, pass)
+    })
     return r_pass
   }
 }
