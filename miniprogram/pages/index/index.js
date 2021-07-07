@@ -27,13 +27,13 @@ Page({
       passList: app.globalData.passList.getPassList()
     })
     console.log(this.data.passList.length)
-    if (this.data.passList.length < 1)
+    if (this.data.passList.length > 0 && this.data.scene != 1154)
       this.setData({
-        display_intro: true
+        display_intro: false
       })
     else
       this.setData({
-        display_intro: false
+        display_intro: true
       })
   },
   onLoad: function (options) {
