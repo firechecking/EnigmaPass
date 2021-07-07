@@ -126,7 +126,7 @@ class PassList {
     var passes = this.father_dict[father_id]
     var newPasses = passes.sort(function (a, b) { return b.add_time - a.add_time })
     if (isAll) return newPasses
-    else return newPasses[0]
+    else return Object.assign({}, newPasses[0])
   }
   getPassList() {
     return this.data;

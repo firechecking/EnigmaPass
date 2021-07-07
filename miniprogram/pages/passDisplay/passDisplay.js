@@ -5,8 +5,7 @@ var utils = require('../../utils/PassList')
 Page({
   data: {
     currentInfo: [],
-    _id: '',
-    histories: ['00000000', '111111111'],
+    histories: ['0'],
     history_idx: 0,
     hasChanged: false,
     pasteStr: '',
@@ -14,16 +13,18 @@ Page({
   },
   refreshData: function () {
     let _histories = []
-    passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true).forEach(function (_pass) {
+    var _passes = passList.getPassbyFatherId(this.data.father_id, true)
+    _passes.forEach(function (_pass) {
       _histories.push(utils.dateFormat(_pass.add_time, "yyyy-MM-dd HH:mm:ss"))
     })
+
     this.setData({
-      _id: this.data._id,
-      currentInfo: passList.getPassByID(this.data._id),
-      histories: _histories
+      currentInfo: Object.assign({}, _passes[app.globalData.history_idx]),
+      histories: _histories,
+      history_idx: app.globalData.history_idx
     })
     wx.setNavigationBarTitle({
-      title: passList.getPassByID(this.data._id).name
+      title: passList.getPassbyFatherId(this.data.father_id, false).name
     })
   },
   savePassword: function () {
@@ -37,15 +38,14 @@ Page({
       newPass['_id'] = newId
       passList.addPasswordObj(newPass)
     } else {
-      let passes = passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true)
+      let passes = passList.getPassbyFatherId(this.data.father_id, true)
       newId = passes[passes.length - 1]._id
       passList.updatePassword(newId, newPass)
     }
     this.setData({
-      'hasChanged': false,
-      'history_idx': 0,
-      '_id': newId
+      'hasChanged': false
     })
+    app.globalData.history_idx = 0
     this.refreshData()
   },
   showOptionSheet: function () {
@@ -93,19 +93,20 @@ Page({
   },
   bindHistoryChange: function (e) {
     console.log(e)
-    var newPass = passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true)[e.detail.value]
+    var newPass = passList.getPassbyFatherId(this.data.father_id, true)[e.detail.value]
     newPass = Object.assign({}, newPass)
+    app.globalData.history_idx = e.detail.value
     this.setData({
       history_idx: e.detail.value,
       currentInfo: newPass,
-      _id: newPass._id,
       hasChanged: false
     })
     console.log(e.detail.value)
   },
   onLoad: function (option) {
-    this.data._id = option.id
-    // this.refreshData()
+    this.data.father_id = option.father_id
+    app.globalData.history_idx = 0
+    console.log('onload')
   },
   onShow: function () {
     console.log('onshow')

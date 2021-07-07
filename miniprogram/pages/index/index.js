@@ -41,7 +41,7 @@ Page({
   },
   selectPass: function (e) {
     wx.navigateTo({
-      url: `../passDisplay/passDisplay?id=${e.currentTarget.dataset.id}`
+      url: `../passDisplay/passDisplay?father_id=${e.currentTarget.dataset.father_id}`
     })
   },
   addPassword: function (e) {

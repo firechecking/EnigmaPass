@@ -4,7 +4,7 @@
     <mp-cells ext-class="my-cells" title="{{cateName.title}}">
       <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this">
         <mp-slideview show="{{false}}" data-id='{{itemName._id}}' buttons="{{slideButtons}}" bindbuttontap="deletePass">
-          <mp-cell link data-id='{{itemName._id}}' bindtap="selectPass">
+          <mp-cell link data-father_id='{{itemName.father_id}}' bindtap="selectPass">
             <view link>{{itemName.name}}</view>
             <view slot="footer">{{itemName.username}}</view>
             <view slot="footer">{{itemName.address}}</view>

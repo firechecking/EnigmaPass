@@ -3,7 +3,7 @@
     <view class="weui-cells__title">{{desc}}</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input wx:if="{{type=='number'}}" type="number" maxlength="2" class="weui-input" data-key="{{key}}" focus
+        <input wx:if="{{type=='number'}}" type="number" maxlength="2" class="weui-input" data-key="{{key}}"
           value="{{value}}" bindinput="onChangeSettingValue" />
         <input wx:if="{{type=='input'}}" class="weui-input" maxlength="50" data-key="{{key}}" value="{{value}}"
           bindinput="onChangeSettingValue" />
