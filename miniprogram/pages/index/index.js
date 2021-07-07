@@ -19,7 +19,7 @@ Page({
       text: '删除历史',
       type: 'warn',
     }],
-    display_ad: false,
+    display_intro: false,
     scene: 1001
   },
   refreshData: function () {
@@ -27,7 +27,7 @@ Page({
       passList: app.globalData.passList.getPassList()
     })
     console.log(this.data.passList.length)
-    if (this.data.passList.length < 3)
+    if (this.data.passList.length < 1)
       this.setData({
         display_ad: true
       })
