@@ -72,18 +72,29 @@ class PassList {
       resolve()
     })
   }
+  fixPassword(pass) {
+    var temp_id = pass['_id']
+    if (pass.father_id.length < 1) pass.father_id = guid()
+    delete pass['_openid']
+    delete pass['_id']
+    wx.cloud.database().collection(col_pass).doc(temp_id).update({
+      data: pass
+    })
+    pass['_id'] = temp_id
+    return pass
+  }
   decodeDatabase(password) {
     var category_ids = []
     var data = new Array
     var that = this
     // collect all category_ids and father_dict
     password.forEach(function (pass) {
+      pass = that.fixPassword(pass)
       if (pass.cate_id.length < 1)
         pass.cate_id = '未分类'
       if (category_ids.indexOf(pass.cate_id) < 0) {
         category_ids.push(pass.cate_id)
       }
-      if (pass.father_id.length < 1) pass.father_id = guid()
       if (!that.father_dict.hasOwnProperty(pass.father_id))
         that.father_dict[pass.father_id] = []
       that.father_dict[pass.father_id].push(pass)
