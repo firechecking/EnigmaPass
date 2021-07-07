@@ -138,13 +138,13 @@ Page({
   },
   onShareAppMessage: function (obj) {
     return {
-      title: '无需加密的超酷密码本',
+      title: '分享一款无需加密的超酷密码本',
       imageUrl: 'cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/share_icon.PNG',
     }
   },
   onShareTimeline: function (obj) {
     return {
-      title: '无需加密的超酷密码本',
+      title: '分享一款无需加密的超酷密码本',
       imageUrl: 'cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/share_icon.PNG',
     }
   }
