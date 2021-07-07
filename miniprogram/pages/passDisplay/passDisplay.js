@@ -28,19 +28,23 @@ Page({
   },
   savePassword: function () {
     var newPass = Object.assign({}, this.data.currentInfo)
+    var newId = ''
     delete newPass['_openid']
     newPass['add_time'] = new Date()
-    
+
     if (this.data.histories.length < app.globalData.history_max) {
-      newPass['_id'] = utils.guid()
+      newId = utils.guid()
+      newPass['_id'] = newId
       passList.addPasswordObj(newPass)
     } else {
       let passes = passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true)
-      passList.updatePassword(passes[passes.length-1]._id, newPass)
+      newId = passes[passes.length - 1]._id
+      passList.updatePassword(newId, newPass)
     }
     this.setData({
       'hasChanged': false,
-      'history_idx': 0
+      'history_idx': 0,
+      '_id': newId
     })
     this.refreshData()
   },
@@ -90,6 +94,7 @@ Page({
   bindHistoryChange: function (e) {
     console.log(e)
     var newPass = passList.getPassbyFatherId(passList.getPassByID(this.data._id).father_id, true)[e.detail.value]
+    newPass = Object.assign({}, newPass)
     this.setData({
       history_idx: e.detail.value,
       currentInfo: newPass,

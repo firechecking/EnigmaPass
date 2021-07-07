@@ -74,13 +74,15 @@ class PassList {
   }
   fixPassword(pass) {
     var temp_id = pass['_id']
-    if (pass.father_id.length < 1) pass.father_id = guid()
-    delete pass['_openid']
-    delete pass['_id']
-    wx.cloud.database().collection(col_pass).doc(temp_id).update({
-      data: pass
-    })
-    pass['_id'] = temp_id
+    if (pass.father_id.length < 1) {
+      pass.father_id = guid()
+      delete pass['_openid']
+      delete pass['_id']
+      wx.cloud.database().collection(col_pass).doc(temp_id).update({
+        data: pass
+      })
+      pass['_id'] = temp_id
+    }
     return pass
   }
   decodeDatabase(password) {
