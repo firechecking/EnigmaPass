@@ -1,5 +1,10 @@
 <!--index.wxml-->
-<view class="page" data-weui-theme="white">
+<view wx:if="{{scene==1154}}" class='gif_preview_view'>
+  <image class='gif_preview'
+    src='cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/EnigmaPassPreview.gif' mode='aspectFit'>
+  </image>
+</view>
+<view wx:if="{{scene!=1154}}" class="page" data-weui-theme="white">
   <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
     <mp-cells ext-class="my-cells" title="{{cateName.title}}">
       <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this">

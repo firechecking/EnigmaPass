@@ -8,7 +8,7 @@ Page({
     histories: ['0'],
     history_idx: 0,
     hasChanged: false,
-    pasteStr: '',
+    copyStr: '',
     timer: null
   },
   refreshData: function () {
@@ -70,11 +70,11 @@ Page({
       }
     })
   },
-  textPaste: function (e) {
+  textCopy: function (e) {
     var that = this
-    this.data.pasteStr += e.currentTarget.dataset.char
+    this.data.copyStr += e.currentTarget.dataset.char
     wx.showToast({
-      title: this.data.pasteStr,
+      title: this.data.copyStr,
       duration: 1300,
       icon: 'none',
       success: function () {
@@ -82,9 +82,9 @@ Page({
           clearTimeout(that.timer)
         that.timer = setTimeout(function () {
           wx.setClipboardData({
-            data: that.data.pasteStr,
+            data: that.data.copyStr,
             success: function (res) {
-              that.data.pasteStr = ''
+              that.data.copyStr = ''
             }
           })
         }, 1100)
@@ -111,5 +111,16 @@ Page({
   onShow: function () {
     console.log('onshow')
     this.refreshData()
+  },
+  onShareAppMessage: function (obj) {
+    return {
+      title: '分享我的密码',
+    }
+  },
+  onShareTimeline: function (obj) {
+    return {
+      title: '分享我的密码',
+      imageUrl: 'cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/share_icon.PNG',
+    }
   }
 })

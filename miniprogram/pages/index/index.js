@@ -15,7 +15,8 @@ Page({
     slideButtons: [{
       text: '删除',
       type: 'warn',
-    }]
+    }],
+    scene: 1001
   },
   refreshData: function () {
     this.setData({
@@ -23,12 +24,16 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(wx.getLaunchOptionsSync())
+    this.setData({
+      scene:wx.getLaunchOptionsSync().scene
+    })
     app.globalData.passList.downstreamDb().then(() => {
       this.refreshData()
     });
     // this.refreshData()
   },
-  onShow:function(){
+  onShow: function () {
     this.refreshData()
   },
   tapCate: function (e) {
@@ -48,7 +53,7 @@ Page({
     if (!(this.data.newPassName && this.data.newPassAddr && this.data.newPassUName && this.data.newCateId)) {
       wx.showToast({
         title: '信息不完整',
-        icon:'error'
+        icon: 'error'
       })
     }
     else {
@@ -96,5 +101,17 @@ Page({
     this.setData({
       showAddPass: true
     })
+  },
+  onShareAppMessage: function (obj) {
+    return {
+      title: '一款超酷的密码本',
+      imageUrl: 'cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/share_icon.PNG',
+    }
+  },
+  onShareTimeline: function (obj) {
+    return {
+      title: '一款超酷的密码本',
+      imageUrl: 'cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/share_icon.PNG',
+    }
   }
 })
