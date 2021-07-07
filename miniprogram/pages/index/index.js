@@ -29,23 +29,23 @@ Page({
     console.log(this.data.passList.length)
     if (this.data.passList.length < 1)
       this.setData({
-        display_ad: true
+        display_intro: true
       })
     else
       this.setData({
-        display_ad: false
+        display_intro: false
       })
   },
   onLoad: function (options) {
     console.log(wx.getLaunchOptionsSync())
     if (wx.getLaunchOptionsSync().scene == 1154)
       this.setData({
-        display_ad: true,
+        display_intro: true,
         scene: 1154
       })
     else
       this.setData({
-        display_ad: false,
+        display_intro: false,
         scene: wx.getLaunchOptionsSync().scene
       })
     app.globalData.passList.downstreamDb().then(() => {
