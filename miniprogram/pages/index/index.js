@@ -15,19 +15,39 @@ Page({
     slideButtons: [{
       text: '删除',
       type: 'warn',
+    }, {
+      text: '删除历史',
+      type: 'warn',
     }],
+    display_ad: false,
     scene: 1001
   },
   refreshData: function () {
     this.setData({
       passList: app.globalData.passList.getPassList()
     })
+    console.log(this.data.passList.length)
+    if (this.data.passList.length < 3)
+      this.setData({
+        display_ad: true
+      })
+    else
+      this.setData({
+        display_ad: false
+      })
   },
   onLoad: function (options) {
     console.log(wx.getLaunchOptionsSync())
-    this.setData({
-      scene:wx.getLaunchOptionsSync().scene
-    })
+    if (wx.getLaunchOptionsSync().scene == 1154)
+      this.setData({
+        display_ad: true,
+        scene: 1154
+      })
+    else
+      this.setData({
+        display_ad: false,
+        scene: wx.getLaunchOptionsSync().scene
+      })
     app.globalData.passList.downstreamDb().then(() => {
       this.refreshData()
     });
@@ -70,17 +90,31 @@ Page({
   deletePass: function (e) {
     var that = this
     var info = app.globalData.passList.getPassByID(e.currentTarget.dataset.id)
-    wx.showModal({
-      title: '删除确认',
-      content: '是否删除密码' + info.name + '，及其所有历史记录',
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          app.globalData.passList.deletePassword(e.currentTarget.dataset.id)
-          that.refreshData()
+    console.log(e)
+    if (e.detail.index == 0)//删除当前
+      wx.showModal({
+        title: '慎重：删除最新密码',
+        content: '删除最新密码：' + info.name + '，剩余历史记录不会被删除',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            app.globalData.passList.deletePassword(e.currentTarget.dataset.id)
+            that.refreshData()
+          }
         }
-      }
-    })
+      })
+    else if (e.detail.index == 1)//删除历史
+      wx.showModal({
+        title: '慎重：删除当前历史密码',
+        content: '删除当前以及所有历史密码：' + info.name,
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            app.globalData.passList.deletePasswordByFatherId(info.father_id)
+            that.refreshData()
+          }
+        }
+      })
   },
   cancelModal: function () {
     this.setData({

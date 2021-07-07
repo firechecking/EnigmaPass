@@ -152,7 +152,6 @@ class PassList {
         this.password[i] = newPass
         this.password[i]._id = _id
       }
-
     }
     this.decodeDatabase(this.password)
     var _pass = null
@@ -174,6 +173,20 @@ class PassList {
       success: function (res) {
       }
     })
+  }
+  deletePasswordByFatherId(_father_id) {
+    var to_remove_ids = []
+    for (var i = this.password.length - 1; i >= 0; i--) {
+      if (this.password[i].father_id == _father_id) {
+        to_remove_ids.push(this.password[i]._id)
+        this.password.splice(i, 1)
+      }
+    }
+    this.decodeDatabase(this.password)
+    to_remove_ids.forEach(function (_id) {
+      wx.cloud.database().collection(col_pass).doc(_id).remove()
+    })
+
   }
   getPassByID(_id) {
     var r_pass = null

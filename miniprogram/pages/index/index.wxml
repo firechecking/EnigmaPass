@@ -1,11 +1,29 @@
 <!--index.wxml-->
-<view wx:if="{{scene==1154}}" class='gif_preview_view'>
+<!-- <view wx:if="{{scene==1154}}" class='gif_preview_view'>
   <image class='gif_preview'
     src='cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/EnigmaPassPreview.gif' mode='aspectFit'>
   </image>
-</view>
-<view wx:if="{{scene!=1154}}" class="page" data-weui-theme="white">
-  <view wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
+</view> -->
+<view class="page" data-weui-theme="white">
+  <view wx:if="{{display_ad}}" class="index-hd">
+    <view class="index-desc">一个完全不用加密、也完全不会泄露的超酷密码本</view>
+    <view class="index-desc">1. 适用于所有变态网站密码</view>
+    <view class="index-desc">2. 直接点选复制快速输入</view>
+    <view class="index-desc">3. 任意回滚历史密码版本</view>
+    <view class="index-desc" style="margin-bottom:10rpx;">开源代码及详细使用说明，见：<navigator
+        url="https://github.com/firechecking/EnigmaPass" class="weui-agree__link">
+        https://github.com/firechecking/EnigmaPass</navigator>
+    </view>
+    <view class="gif_preview_view">
+      <image class='gif_preview'
+        src='cloud://patrick-uxzpg.7061-patrick-uxzpg-1302828728/EnigmaPass/icon/EnigmaPassPreview.gif'
+        mode='aspectFit'>
+      </image>
+    </view>
+    <view wx:if="{{scene!=1154}}" style="margin-top:-50rpx;font-size:50rpx;">当前无密码，试试点击右侧+号添加密码吧</view>
+    <view wx:if="{{scene==1154}}" style="margin-top:-50rpx;font-size:50rpx;">试试下方“前往小程序”添加密码吧</view>
+  </view>
+  <view wx:if="{{!display_ad}}" wx:for="{{passList}}" wx:for-item="cateName" wx:key="*this">
     <mp-cells ext-class="my-cells" title="{{cateName.title}}">
       <view wx:for="{{cateName.passes}}" wx:for-item="itemName" wx:key="*this">
         <mp-slideview show="{{false}}" data-id='{{itemName._id}}' buttons="{{slideButtons}}" bindbuttontap="deletePass">

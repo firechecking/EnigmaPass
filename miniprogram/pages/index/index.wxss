@@ -2,14 +2,14 @@
 @import "../common.wxss";
 .gif_preview_view{
   width: 100%;
-  height: 100%;
+  height: 800rpx;
   align-items: center;
   align-content: center;
-  background-color: rgb(194, 194, 194);
+  /* background-color: rgb(194, 194, 194); */
 }
 .gif_preview {
-  margin-left: 25rpx;
-  margin-top: 25rpx;
+  /* margin-left: 25rpx; */
+  /* margin-top: 25rpx; */
   width: 700rpx;
   height: 90%;
 }
@@ -56,4 +56,32 @@ input {
   margin: 20rpx;
   height: 42rpx;
   font-size: 35rpx;
+}
+
+.index-hd {
+  padding: 10px 40px 20px;
+  text-align: center;
+}
+
+.index-bd {
+  padding: 0 15px 20px;
+}
+
+.index-ft {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.index-logo {
+  /* width: 43px;
+  height: 43px; */
+  width: 43px;
+  height: 43px;
+}
+
+.index-desc {
+  margin-top: 4px;
+  color: #888888;
+  /* font-size: 14px; */
+  font-size: 14px;
 }
