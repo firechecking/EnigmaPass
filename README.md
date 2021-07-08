@@ -10,4 +10,4 @@
 
 
 
-![](https://7061-patrick-uxzpg-1302828728.tcb.qcloud.la/EnigmaPass/icon/EnigmaPassPreview.gif?sign=d141937658fa4ca6db3770d0b8f9d48a&t=1625711160)
+<img src="https://7061-patrick-uxzpg-1302828728.tcb.qcloud.la/EnigmaPass/icon/EnigmaPassPreview.gif?sign=d141937658fa4ca6db3770d0b8f9d48a&t=1625711160" style="zoom:30%;" />
